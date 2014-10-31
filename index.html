@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Ibd818.github.io : Blog">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Ibd818.github.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ibd818">View on GitHub</a>
+
+          <h1 id="project_title">Ibd818.github.io</h1>
+          <h2 id="project_tagline">Blog</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="%E9%97%9C%E6%96%BCpython-2x%E4%B8%AD%E6%96%87%E5%AD%97%E7%B7%A8%E7%A2%BC%E7%9A%84%E7%B0%A1%E5%96%AE%E8%AA%AA%E6%98%8E" class="anchor" href="#%E9%97%9C%E6%96%BCpython-2x%E4%B8%AD%E6%96%87%E5%AD%97%E7%B7%A8%E7%A2%BC%E7%9A%84%E7%B0%A1%E5%96%AE%E8%AA%AA%E6%98%8E"><span class="octicon octicon-link"></span></a>關於python 2.x中文字編碼的簡單說明</h1>
+
+<ol>
+<li>如果文件含有非ASCII字符, 在開頭加一行註釋:
+# encoding=utf-8
+# 如果你的源代碼文件不是UTF-8編碼, 把'utf-8'換成相應的編碼</li>
+</ol>
+
+<p>否則你會遭遇
+SyntaxError: Non-ASCII character
+錯誤.</p>
+
+<ol>
+<li>str類型是字節序列而非字符序列. 它的編碼方式由文件本身的編碼方式或encode時指定的編碼方式決定:</li>
+<li>寫在源文件中的str, 編碼方式爲源文件的編碼方式.</li>
+<li>從其它文件中讀取的str, 就是那個文件中的字節序列, 不做任何轉換.</li>
+<li><p>使用encode方法得到的str, 其編碼爲指定編碼.
+對str使用len, 會返回字節序列的長度:
+UTF-8環境下, '文字'的字節序列爲0xe6 0x96 0x87 0xe5 0xad 0x97, len('文字') == 6.
+GB18030環境下, '文字'的字節序列爲0xce 0xc4 0xd7 0xd6, len('文字') == 4</p></li>
+<li><p>unicode類型是字符序列, 無需關心它內部的編碼方式(可能爲USC-2或USC-4).
+無論編碼爲何, len(u'文字') == 2.</p></li>
+<li><p>encode的作用是把字符序列編碼成字節序列(unicode -&gt; str), decode的作用是把字節序列解碼成字符序列(str -&gt; unicode). 如果對unicode使用encode或對str使用decode, 會得到錯誤或無意義的結果.</p></li>
+<li><p><strong>str</strong>必須返回str類型, <strong>unicode</strong>必須返回unicode類型. 否則會收到TypeError.</p></li>
+</ol>
+
+<p>转自v2ex。</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
